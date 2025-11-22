@@ -20,6 +20,8 @@ std::string targetIpString;
 #include "groovymister.h"
 #include "renderer_nogpu.h"
 
+// TODO: What can you offload to the GPU?
+
 std::atomic_bool capturing_screen = false;
 void capture_screen()
 {
@@ -68,6 +70,7 @@ void cast_screen()
     }
 }
 
+// TODO: Get init function working first
 bool initialized = false;
 std::unique_ptr<std::thread> captureScreenTask;
 MISTERCASTLIB_API bool Initialize(log_function fnLog, capture_image_function fnCapture)
@@ -96,18 +99,21 @@ MISTERCASTLIB_API bool Initialize(log_function fnLog, capture_image_function fnC
     selected_modeline.interlace = 0;
     
 
+    // TODO: Video capture
     if (!InitializeVideoCapture(0, fnCapture))
     {
         LogMessage("Failed to initialize video capture.", true);
         return false;
     }
 
+    // TODO: Audio capture
     if (!InitAudioCapture())
     {
         LogMessage("Failed to initialize audio capture.", true);
         return false;
     }
 
+    // TODO: Screen capture
     // Fill the buffers to be safe
     for (int i = 0; i < BUFFER_COUNT; i++)
         TickVideoCapture();

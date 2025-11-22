@@ -22,6 +22,7 @@ std::atomic_bool        hasNewSourceOptions;
 SourceOptions           currentSourceOptions;
 SourceOptions           newSourceOptions;
 
+// TODO: Init for Linux
 bool InitializeVideoCapture(int outputNumber, capture_image_function fnCapture)
 {
     displayIndex = outputNumber;
@@ -34,6 +35,8 @@ bool InitializeVideoCapture(int outputNumber, capture_image_function fnCapture)
     currentSourceOptions.syncrefresh = true;
     currentSourceOptions.cropmode = CropMode::Full43;
 
+    // Frame buffer
+    // TODO: Try on GPU?
     if (videoCaptures == nullptr)
     {
         videoCaptures = new Bitmap[BUFFER_COUNT];
