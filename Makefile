@@ -16,13 +16,13 @@ OBJ=testmain.o WaylandVideoCapture.o
 OBJDIR=$(OUTDIR)/obj
 OBJPATHS=$(patsubst %,$(OBJDIR)/%,$(OBJ))
 
-CFLAGS=-Wall -I$(INCDIR) -I$(LIBDIR) $$(pkg-config --cflags --libs libpipewire-0.3)
+CFLAGS=-Wall -I$(INCDIR) -I$(LIBDIR) -ggdb $$(pkg-config --cflags --libs libpipewire-0.3) $$(pkg-config --cflags --libs libportal)
 LIBFLAGS=-lm
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.$(FILETYPE) $(INCPATHS) $(LIBPATHS) | $(OBJDIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-test: $(OBJPATHS) | $(OUTDIR)
+debug: $(OBJPATHS) | $(OUTDIR)
 	$(CC) $(CFLAGS) $(LIBFLAGS) -o $(OUTDIR)/$@ $^
 
 $(OBJDIR):

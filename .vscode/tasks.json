@@ -1,0 +1,18 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: g++ build debug",
+            "command": "make",
+            "args": ["debug"],
+            "options": { },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Use Makefile to compile the debug task"
+        }
+    ],
+    "version": "2.0.0"
+}

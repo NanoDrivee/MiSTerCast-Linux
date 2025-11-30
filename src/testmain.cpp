@@ -5,7 +5,9 @@
 int main() {
     std::cout << "INIT START\n";
 
-    InitializeWaylandCapture();
+    WaylandVideoCapture capture = WaylandVideoCapture();
+
+    // pw_thread_loop_wait(capture.getPwLoop());
 
     std::cout << "INIT COMPLETE\n";
 }
